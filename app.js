@@ -4,9 +4,12 @@
  */
 
 var express = require('express')
-  , routes = require('./routes');
-
-var app = module.exports = express.createServer();
+  , routes = require('./routes')
+  , options = {
+  key: fs.readFileSync('privatekey.pem'),
+  cert: fs.readFileSync('certificate.pem')
+  }
+var app = module.exports = express.createServer(options);
 
 // Configuration
 

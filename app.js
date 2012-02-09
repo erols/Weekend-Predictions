@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , fs = require('fs')
   , options = {
   key: fs.readFileSync('privatekey.pem'),
   cert: fs.readFileSync('certificate.pem')

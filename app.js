@@ -7,8 +7,9 @@ var express = require('express')
   , routes = require('./routes')
   , fs = require('fs')
   , options = {
-  key: fs.readFileSync('privatekey.pem'),
-  cert: fs.readFileSync('certificate.pem')
+  key: fs.readFileSync('/home/erol/certs/privatekey.pem'),
+  cert: fs.readFileSync('/home/erol/certs/certificate.pem'),
+  ca: fs.readFileSync('/home/erol/certs/intermediate.crt')
   }
 var app = module.exports = express.createServer(options);
 
@@ -35,7 +36,7 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
+app.all('/', routes.index);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
